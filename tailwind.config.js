@@ -6,9 +6,6 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
-        primary: '#FF7F00', // Add StackOverflow-like color
-      },
     },
   },
   plugins: [],
