@@ -1,13 +1,15 @@
 import axios, { AxiosRequestConfig } from "axios";
 
 export interface FetchResponse<T> {
-  count: number;
-  next: string|null;
-  results: T[];
-}
+    items: T[]; // The API returns 'items' instead of 'results'
+    has_more: boolean;
+    quota_max: number;
+    quota_remaining: number;
+  }
+  
 
 const axiosInstance = axios.create({
-  baseURL: "https://api.stackexchange.com/2.3/questions",
+  baseURL: "https://api.stackexchange.com/2.3",
   params: {
     site: "stackoverflow",
   },

@@ -1,3 +1,5 @@
+import { Question } from "./Question";
+
 export interface Questions{
-    question: string;
+    question: Question[];
 }
