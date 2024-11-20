@@ -7,7 +7,7 @@ import { RiHomeLine } from "react-icons/ri";
 import { MdOutlinePublic, MdOutlineStars } from "react-icons/md";
 import { CgToolbox } from "react-icons/cg";
 
-const Navbar = () => {
+const NavBar = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 	const toggleMenu = () => {
@@ -146,4 +146,4 @@ const Navbar = () => {
 	);
 };
 
-export default Navbar;
+export default NavBar;
