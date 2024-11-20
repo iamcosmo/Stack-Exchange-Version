@@ -21,5 +21,6 @@ export interface Question{
     last_edit_date:number;
     last_activity_date:number;
     owner:Owner;
+    link:string;
 
 }
