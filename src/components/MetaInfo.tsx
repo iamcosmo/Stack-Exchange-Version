@@ -1,4 +1,3 @@
-import React from "react";
 import { FaPen, FaStackOverflow } from "react-icons/fa";
 
 const MetaInfo = () => {

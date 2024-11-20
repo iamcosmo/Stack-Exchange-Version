@@ -1,7 +1,7 @@
 
 import MetaInfo from "./components/MetaInfo";
-import Navbar from "./components/NavBar";
 import SideBar from "./components/SideBar";
+import Navbar from './components/NavBar';
 function App() {
 	return (
 		<>
