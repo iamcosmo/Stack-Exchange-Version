@@ -1,6 +1,6 @@
 # Stack Exchange Version (React + Vite + TypeScript)
 
-## Check the Live-Link: [Stack-Exchng-Version](https://example.com/docs)
+## Check the Live-Link: [Stack-Exchng-Version](https://sensational-malasada-ab1e92.netlify.app/)
 
 This project is a **React** application built with **Vite** and **TypeScript**, designed to display data fetched from the Stack Exchange API. It leverages modern web technologies to provide a fast and dynamic user interface.
 
