@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect} from 'react';
 import useQuestions from './hooks/useQuestions'
 import QuestionCard from './components/QuestionCard';
 import { useFilterContext } from './context/FilterContext';
