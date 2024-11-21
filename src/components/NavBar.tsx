@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import { FaSearch, FaBars, FaTimes } from "react-icons/fa";
 import { BiComment } from "react-icons/bi";
 import { HiOutlineTrophy, HiOutlineUsers } from "react-icons/hi2";
