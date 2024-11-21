@@ -28,6 +28,20 @@ class APIClient<T> {
       return res.data.items;
   }
 
+  searchQuestions = async (title: string,sortFilter:string, config?: AxiosRequestConfig) => {
+    const res = await axiosInstance.get<FetchResponse<T>>(this.endpoint, {
+      ...config,
+      params: {
+        ...config?.params,
+        title,
+        sort: sortFilter,
+        order: "desc",
+      },
+    });
+    console.log("Search Results:", res.data);
+    return res.data.items;
+  };
+
 }
 
 export default APIClient;
