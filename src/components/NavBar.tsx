@@ -8,6 +8,7 @@ import { MdOutlinePublic, MdOutlineStars } from "react-icons/md";
 import { CgToolbox } from "react-icons/cg";
 import { useFilterContext } from "../context/FilterContext";
 import useSimilarQuestions from "../hooks/useSimilarQuestions";
+import useQuestions from "../hooks/useQuestions";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,12 +16,21 @@ const Navbar = () => {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-  const [searchQuery, setSearchQuery] = useState("");
+ 
   const { setResults, selectedFilter } = useFilterContext(); 
-  const { data, isLoading, isError } = useSimilarQuestions(
-    searchQuery,
-    selectedFilter
-  );
+
+  const [inputQuery, setInputQuery] = useState(""); 
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const { data } = searchQuery
+    ? useSimilarQuestions(searchQuery, selectedFilter) 
+    : useQuestions(selectedFilter); 
+
+  const handleSearch = () => {
+    if (!inputQuery.trim()) return; 
+    setSearchQuery(inputQuery); 
+    console.log("Searching:", inputQuery);
+  };
 
   useEffect(() => {
     if (data) {
@@ -30,11 +40,7 @@ const Navbar = () => {
     }
   }, [data]);
 
-  const handleSearch = () => {
-    if (!searchQuery) return;
-    console.log("Searching:", searchQuery);
-  };
-
+  
   return (
     <nav className="bg-white sticky top-0 z-10">
       <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -64,8 +70,8 @@ const Navbar = () => {
                 type="text"
                 placeholder="Search Your Answers Here..."
                 className="block w-full px-4 py-2 pr-10 border border-gray-300 rounded-3xl shadow-sm placeholder-gray-500 sm:text-sm outline-none"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                value={inputQuery}
+                onChange={(e) => setInputQuery(e.target.value)}
               />
               <button
                 className="absolute right-4 top-1/2 transform -translate-y-1/2 text-orange-400"

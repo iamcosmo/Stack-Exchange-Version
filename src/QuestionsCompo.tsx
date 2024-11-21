@@ -1,17 +1,28 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useQuestions from './hooks/useQuestions'
 import QuestionCard from './components/QuestionCard';
+import { useFilterContext } from './context/FilterContext';
 
 
 const QuestionsCompo = () => {
 
-  const [selectedFilter, setSelectedFilter] = useState("hot");
+
+  const { setResults,results, selectedFilter,setSelectedFilter } = useFilterContext(); 
 
   const { data, isLoading, isError } = useQuestions(selectedFilter);
+
+  useEffect(() => {
+    if (data) {
+      setResults(data);
+    } else {
+      setResults([]);
+    }
+  }, [data, setResults]);
 
   if (isError) return (<p>Error Loading the results</p>);
 
   if (isLoading) return (<p>Loading...</p>);
+
 
 
   return (
@@ -44,7 +55,7 @@ const QuestionsCompo = () => {
 				) : isError ? (
 					<div>{isError}</div>
 				) : (
-					data?.map((question) => (
+					results?.map((question) => (
 						<QuestionCard
 							key={question.question_id}
 							question={question.title}

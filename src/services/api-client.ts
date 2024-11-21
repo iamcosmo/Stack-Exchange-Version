@@ -10,7 +10,7 @@ const axiosInstance = axios.create({
   baseURL: "https://api.stackexchange.com/2.3",
   params: {
     site: "stackoverflow",
-    key:import.meta.env.VITE_KEY as string,
+    key:import.meta.env.VITE_API_KEY as string,
   },
 });
 
