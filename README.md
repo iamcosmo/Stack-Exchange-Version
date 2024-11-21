@@ -20,7 +20,7 @@ To run this project locally, you need to clone the repository and install the de
 ### Step 1: Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/stack-exchange-version.git
+git clone [https://github.com/iam/stack-exchange-version.git](https://github.com/iamcosmo/Stack-Exchange-Version.git)
 cd stack-exchange-version
 
 
