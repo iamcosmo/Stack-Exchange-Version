@@ -5,14 +5,16 @@ import { Question } from "../entities/Question";
 
 const apiClient = new APIClient<Question>("/questions");
 
-const useQuestions = () =>
+const useQuestions = (sort: string) =>
   useQuery({
-    queryKey: ["questions"],
-    queryFn: apiClient.getAllQuestions,
+    queryKey: ["questions", sort],
+    queryFn: () => apiClient.getAllQuestions({ params: { sort,pageSize:10 } }),
     staleTime: ms("2h"),
-    refetchOnWindowFocus: false, 
+    retry: 3, 
+    retryDelay: (attempt) => Math.min(1000 * 2 ** attempt, 30000),
+    refetchOnWindowFocus: false,
     refetchOnMount: false,
-    refetchInterval: ms("1h"), 
+    refetchInterval: ms("1h"),
     refetchIntervalInBackground: true,
   });
 
