@@ -4,14 +4,14 @@ import { Question } from "../entities/Question";
 interface FilterContextType {
   selectedFilter: string;
   setSelectedFilter: (filter: string) => void;
-  results: any[];
-  setResults: (data: any[]) => void;
+  results: Question[];
+  setResults: (data: Question[]) => void;    
 }
 
 const FilterContext = createContext<FilterContextType | undefined>(undefined);
 
 export const FilterProvider = ({ children }: { children: ReactNode }) => {
-  const [selectedFilter, setSelectedFilter] = useState("");
+  const [selectedFilter, setSelectedFilter] = useState("hot");
   const [results, setResults] = useState<Question[]>([]);
 
   return (
